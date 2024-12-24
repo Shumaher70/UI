@@ -1,5 +1,5 @@
 export interface ButtonProps {
-  size?: ButtonSize;
+  size?: ButtonSizeTypes;
   asChild?: boolean;
   disabled?: boolean;
   className?: string;
@@ -7,7 +7,7 @@ export interface ButtonProps {
   variant?: ButtonVariantTypes;
 }
 
-export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonSizeTypes = "sm" | "md" | "lg";
 
 export type ButtonVariantTypes =
   | "link"
@@ -19,7 +19,7 @@ export type ButtonVariantTypes =
   | "destructive";
 
 export interface StyledButtonPropsTypes {
-  size: ButtonSize;
+  size: ButtonSizeTypes;
   disabled?: boolean;
   variant: ButtonVariantTypes;
 }

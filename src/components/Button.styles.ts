@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ButtonVariantTypes } from "./Button.types";
+import { ButtonSizeTypes, ButtonVariantTypes } from "./Button.types";
 
 const buttonStylesVariant = (variant: ButtonVariantTypes) => {
   switch (variant) {
@@ -67,20 +67,40 @@ const buttonStylesVariant = (variant: ButtonVariantTypes) => {
   }
 };
 
+const buttonStylesSize = (size: ButtonSizeTypes) => {
+  switch (size) {
+    case "sm":
+      return css`
+        padding: 4px 8px;
+        font-size: 14px;
+      `;
+    case "md":
+      return css``;
+    case "lg":
+      return css`
+        padding: 12px 24px;
+        font-size: 20px;
+      `;
+    default:
+      return css``;
+  }
+};
+
 const StyledButton = styled.button<{
   variant: ButtonVariantTypes;
-  size: string;
+  size: ButtonSizeTypes;
   disabled?: boolean;
 }>`
   font-weight: normal;
   color: #f5f5f5;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  padding: 7px 14px;
+  padding: 8px 16px;
   transition: background-color 0.1s linear;
 
   ${(props) => buttonStylesVariant(props.variant)}
+  ${(props) => buttonStylesSize(props.size)}
 `;
 
 export default StyledButton;
