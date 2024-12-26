@@ -13,8 +13,9 @@ export interface InputProps {
     | "url"
     | "search"
     | "color"
-    | "datetime-local"; // Можно добавить другие типы по необходимости
+    | "datetime-local";
   placeholder?: string;
+  className?: string;
   disabled?: boolean;
   value?: string;
   name?: string;
