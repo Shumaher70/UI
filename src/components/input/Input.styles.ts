@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
+import { InputProps } from "./Input.types";
 
-export const StyledInput = styled.input<{ disabled?: boolean }>`
+export const StyledInput = styled.input<
+  Pick<InputProps, "type"> & {
+    disabled?: boolean;
+  }
+>`
   display: relative;
   border-radius: 6px;
   padding: 8px 16px;
@@ -19,6 +24,36 @@ export const StyledInput = styled.input<{ disabled?: boolean }>`
     props.disabled &&
     css`
       cursor: not-allowed;
-      backdrop-filter: bright(0.5);
     `}
+
+  ${(props) =>
+    props.type === "file" &&
+    css`
+      display: none;
+    `}
+`;
+
+export const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const StyledInputFile = styled.div`
+  row-gap: 4px;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-white);
+  background-color: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+export const StyledInputFileText = styled.span`
+  size: 16px;
+  color: var(--text-white);
+  cursor: default;
 `;
