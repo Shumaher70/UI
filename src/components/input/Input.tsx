@@ -7,7 +7,6 @@ import {
   StyledInputFileText,
 } from "./Input.styles";
 
-import { Label } from "../label/Label";
 import { InputProps } from "./Input.types";
 
 export const Input = ({ id, className, type, ...props }: InputProps) => {
@@ -27,7 +26,6 @@ export const Input = ({ id, className, type, ...props }: InputProps) => {
     <StyledInput className={className} id={id} type={type} {...props} />
   ) : (
     <StyledWrapper>
-      <Label htmlFor={id}>Hello</Label>
       <StyledInputFile className={className} onClick={handleClick}>
         <StyledInput
           id={id}
