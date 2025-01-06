@@ -1,5 +1,4 @@
-export interface LabelProps
-  extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & {
   htmlFor?: string;
   hidden?: boolean;
   className?: string;
@@ -8,4 +7,4 @@ export interface LabelProps
   children?: React.ReactNode;
   style?: React.CSSProperties;
   onClick?: (event: React.MouseEvent<HTMLLabelElement, MouseEvent>) => void;
-}
+};
