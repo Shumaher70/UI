@@ -1,11 +1,9 @@
 import styled, { css } from "styled-components";
-import { InputProps } from "./Input.types";
+import { StyledInputTypes } from "./Input.types";
 
-export const StyledInput = styled.input<
-  Pick<InputProps, "type"> & {
-    disabled?: boolean;
-  }
->`
+export const StyledInput = styled.input.attrs<StyledInputTypes>((props) => ({
+  className: props.className,
+}))`
   display: relative;
   border-radius: 6px;
   padding: 8px 16px;
