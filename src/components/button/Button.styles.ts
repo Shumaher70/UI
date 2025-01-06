@@ -5,37 +5,37 @@ const buttonStylesVariant = (variant: ButtonVariantTypes) => {
   switch (variant) {
     case "default":
       return css`
-        color: #1c1c1c;
-        background-color: #f5f5f5;
+        color: var(--bg-black);
+        background-color: var(--bg-white);
 
         &:hover {
-          background-color: #f5f5f5c3;
+          background-color: var(--bg-white-hover);
         }
       `;
     case "secondary":
       return css`
-        color: #f5f5f5;
-        background-color: #27272a;
+        color: var(--bg-black);
+        background-color: var(--bg-black);
 
         &:hover {
-          background-color: #27272ada;
+          background-color: var(--bg-black) da;
         }
       `;
     case "destructive":
       return css`
-        background-color: #7f1d1d;
+        background-color: var(--bg-error);
 
         &:hover {
-          background-color: #7f1d1de1;
+          background-color: var(--bg-error-hover);
         }
       `;
     case "outline":
       return css`
-        background-color: #000;
-        border: 1px solid #27272a;
+        background-color: var(--bg-black);
+        border: 1px solid var(--bg-black);
 
         &:hover {
-          background-color: #27272a;
+          background-color: var(--bg-black);
         }
       `;
     case "link":
@@ -47,11 +47,11 @@ const buttonStylesVariant = (variant: ButtonVariantTypes) => {
       `;
     case "icon":
       return css`
-        background-color: #000;
-        border: 1px solid #27272a;
+        background-color: var(--bg-black);
+        border: 1px solid var(--bg-black);
         padding: 0;
         &:hover {
-          background-color: #27272a;
+          background-color: var(--bg-black);
         }
       `;
     case "ghost":
@@ -59,7 +59,7 @@ const buttonStylesVariant = (variant: ButtonVariantTypes) => {
         background-color: transparent;
 
         &:hover {
-          background-color: #27272a;
+          background-color: var(--bg-black);
         }
       `;
     default:
@@ -86,13 +86,15 @@ const buttonStylesSize = (size: ButtonSizeTypes) => {
   }
 };
 
-const StyledButton = styled.button<{
+const StyledButton = styled.button.attrs<{
   variant: ButtonVariantTypes;
   size: ButtonSizeTypes;
   disabled?: boolean;
-}>`
+}>((props) => ({
+  className: props.className,
+}))`
   font-weight: normal;
-  color: #f5f5f5;
+  color: var(--text-white);
   border-radius: 5px;
   font-size: 16px;
   font-weight: 600;
