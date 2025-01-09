@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { StyledInputTypes } from "./Input.types";
+import { StyledInputTypes } from "./input.types";
 
 export const StyledInput = styled.input.attrs<StyledInputTypes>((props) => ({
   className: props.className,

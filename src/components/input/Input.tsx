@@ -1,13 +1,11 @@
 import React from "react";
-
+import { InputProps } from "./input.types";
 import {
   StyledInput,
-  StyledWrapper,
   StyledInputFile,
   StyledInputFileText,
-} from "./Input.styles";
-
-import { InputProps } from "./Input.types";
+  StyledWrapper,
+} from "./input.styles";
 
 export const Input = ({ id, className, type, ...props }: InputProps) => {
   const [fileName, setFileName] = React.useState<string>("No file chosen");

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ButtonSizeTypes, ButtonVariantTypes } from "./Button.types";
+import { ButtonSizeTypes, ButtonVariantTypes } from "./button.types";
 
 const buttonStylesVariant = (variant: ButtonVariantTypes) => {
   switch (variant) {

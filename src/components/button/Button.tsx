@@ -1,5 +1,5 @@
-import StyledButton from "./Button.styles";
-import { ButtonProps } from "./Button.types";
+import StyledButton from "./button.styles";
+import { ButtonProps } from "./button.types";
 
 export const Button = ({
   children,
