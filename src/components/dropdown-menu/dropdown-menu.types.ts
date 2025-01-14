@@ -8,5 +8,16 @@ export interface DropdownMenuProps
   children: React.ReactNode;
 }
 
-export type dropdownMenuProviderType = RadioGroupContextType;
+export type dropdownMenuProviderType = RadioGroupContextType & {
+  isOpen: boolean;
+  isClose: boolean;
+  setIsOpen: () => void;
+  handleTriggerRef: (
+    ref: React.RefObject<HTMLDivElement | HTMLButtonElement>,
+  ) => void;
+  triggerCoordinates: {
+    y: number;
+    x: number;
+  };
+};
 export type dropdownMenuProviderProps = RadioGroupProviderProps;
