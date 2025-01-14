@@ -23,7 +23,15 @@ const DropdownMenuProvider = ({
   children,
 }: dropdownMenuProviderProps) => {
   const [selectedValue, setSelectedValue] = useState<string>("");
-
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isClose, setIsClose] = useState<boolean>(false);
+  const [triggerCoordinates, setTriggerCoordinates] = useState<{
+    x: number;
+    y: number;
+  }>({
+    x: 0,
+    y: 0,
+  });
   useEffect(() => {
     if (!selectedValue && value) {
       setSelectedValue(value);
@@ -37,9 +45,40 @@ const DropdownMenuProvider = ({
     }
   };
 
+  const handleOpen = () => {
+    if (isOpen) {
+      setIsClose(false);
+      setTimeout(() => setIsOpen(false), 100);
+    } else {
+      setIsClose(true);
+      setTimeout(() => setIsOpen(true), 0);
+    }
+  };
+
+  const handleTriggerRef = (
+    ref: React.RefObject<HTMLDivElement | HTMLButtonElement>,
+  ) => {
+    if (ref.current) {
+      const { right, top } = ref.current.getBoundingClientRect();
+      setTriggerCoordinates((prev) => ({
+        ...prev,
+        x: right,
+        y: top,
+      }));
+    }
+  };
+
   return (
     <dropdownMenuContext.Provider
-      value={{ selectedValue, onChange: handleChange }}
+      value={{
+        selectedValue,
+        onChange: handleChange,
+        setIsOpen: handleOpen,
+        isClose,
+        isOpen,
+        handleTriggerRef,
+        triggerCoordinates,
+      }}
     >
       {children}
     </dropdownMenuContext.Provider>
