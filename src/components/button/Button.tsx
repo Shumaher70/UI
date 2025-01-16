@@ -12,7 +12,7 @@ export const Button = ({
   return (
     <StyledButton
       as={asChild ? "div" : "button"}
-      variant={variant}
+      $variant={variant}
       size={size}
       disabled={disabled}
       className={className}
