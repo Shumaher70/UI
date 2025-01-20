@@ -1,8 +1,37 @@
 import styled from "styled-components";
+import { StyledDropdownMenuContentProps } from "./dropdown-menu-content.types";
 
-export const StyledDropdownMenuContent = styled.div.attrs((props) => ({
-  className: props.className,
-}))`
+function changingLocationY(props: StyledDropdownMenuContentProps) {
+  const { top, distanceFromBottomToBottomOfWindow, height } =
+    props.$triggerSize;
+  const { height: heightOwn } = props.$size;
+
+  if (distanceFromBottomToBottomOfWindow < top) {
+    return -height + -heightOwn + -10;
+  } else {
+    return 10;
+  }
+}
+
+function changingLocationX(props: StyledDropdownMenuContentProps) {
+  const { right, width: widthTrigger } = props.$triggerSize;
+
+  const { width: widthOwn } = props.$size;
+
+  if (right > widthOwn / 2 - -widthTrigger / 2 - -20) {
+    return -widthOwn / 2 - -widthTrigger / 2;
+  }
+
+  if (right < widthOwn) {
+    return -right - -widthTrigger - -20;
+  }
+}
+
+export const StyledDropdownMenuContent = styled.div.attrs<StyledDropdownMenuContentProps>(
+  (props) => ({
+    className: props.className,
+  }),
+)`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -10,7 +39,6 @@ export const StyledDropdownMenuContent = styled.div.attrs((props) => ({
   border: 1px solid var(--bg-black);
   border-radius: 8px;
   justify-content: center;
-  top: 0;
   min-width: 350px;
   transition:
     transform 0.1s ease,
@@ -18,6 +46,11 @@ export const StyledDropdownMenuContent = styled.div.attrs((props) => ({
     opacity 0.1s ease;
   animation-duration: 0.1s;
   animation-fill-mode: forwards;
+
+  transform: translate(
+    ${(props) => changingLocationX(props)}px,
+    ${(props) => changingLocationY(props)}px
+  ) !important;
 
   &[data-state="true"] {
     animation-name: fadeIn;
